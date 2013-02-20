@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+    <meta charset="utf-8">
+	<title>Cacti Viewer</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+</head>
+<div id="wrap">
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="page-header">
+			<h1 id="h1title"></h1>
+		</div>
+		<ul id="navul" class="nav nav-pills">
+		</ul>
+		<div class="form-actions">
+			<label class="checkbox">
+				<input type="checkbox" id="reloadcheck"> 自動リロード（１分間隔：過去１時間）
+			</label>
+			<div id="timeform">
+				<div id="befordate" class="input-append com1">
+					<input class="befordate" data-format="yyyy-MM-dd" type="text"></input>
+					<span class="add-on">
+						<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					</span>
+				</div>
+				<div id="befortime" class="input-append com1">
+					<input class="befortime" data-format="hh:mm:ss" type="text"></input>
+					<span class="add-on">
+						<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					</span>
+				</div>
+				<div id="afterdate" class="input-append com3">
+					<input class="afterdate" data-format="yyyy-MM-dd" type="text"></input>
+					<span class="add-on">
+						<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					</span>
+				</div>
+				<div id="aftertime" class="input-append com1">
+					<input class="aftertime" data-format="hh:mm:ss" type="text"></input>
+					<span class="add-on">
+						<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					</span>
+				</div>
+				<button type="submit" id="timepickerbtn" class="btn btn-primary">期間変更</button>
+			</div>
+		</div>
+		<p class="muted">
+			<br><small>画像が表示されない場合は、<a id="burl" href="" target="_blank">cacti</a>に一度ログインしてください。</small>
+		</p>
+		<hr>
+		<div id="loadcontents">
+		</div>
+	</div>
+</div>
+<hr>
+<div id="footer">
+	<div class="container">
+		<p class="muted credit">Create by Yu Gotou.</p>
+	</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="list.js"></script>
+<script src="setting.js"></script>
+<script src="js/cactiviewer.js"></script>
+</body>
+</html>
