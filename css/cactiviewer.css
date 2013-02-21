@@ -1,4 +1,4 @@
-#befordate {float:left;}
-.befortime {margin-left:10px;}
-#afterdate {float:left;}
-.aftertime {margin-left:10px;}
+#startdate {float:left;}
+.starttime {margin-left:10px;}
+#enddate {float:left;}
+.endtime {margin-left:10px;}

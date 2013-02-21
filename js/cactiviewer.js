@@ -2,12 +2,12 @@
 var inhtml = "";
 var spancnt = 0;
 var Year,month,day,hour,minute,second;
-var unixbefor,unixafter;
+var unixstartdatetime,unixenddatetime;
 $(function() {
-	$('#befordate').datetimepicker({pickTime: false});
-	$('#afterdate').datetimepicker({pickTime: false});
-	$('#befortime').datetimepicker({pickDate: false});
-	$('#aftertime').datetimepicker({pickDate: false});
+	$('#startdate').datetimepicker({pickTime: false});
+	$('#enddate').datetimepicker({pickTime: false});
+	$('#starttime').datetimepicker({pickDate: false});
+	$('#endtime').datetimepicker({pickDate: false});
 	$("#h1title").text(settingList.SiteName);
 	$("#burl").attr("href",settingList.baseurl);
 	var idx = 1;
@@ -31,12 +31,12 @@ $(function() {
 		};
 	});
 	$("#timepickerbtn").click(function(){
-		var befordatetime = $('.befordate').val() + " " + $('.befortime').val();
-		var afterdatetime = $('.afterdate').val() + " " + $('.aftertime').val();
-		befordatetime = new Date(befordatetime);
-		afterdatetime = new Date(afterdatetime);
-		unixbefor = Math.round(befordatetime.getTime() / 1000);
-		unixafter = Math.round(afterdatetime.getTime() / 1000);
+		var startdatetime = $('.startdate').val() + " " + $('.starttime').val();
+		var enddatetime = $('.enddate').val() + " " + $('.endtime').val();
+		startdatetime = new Date(startdatetime);
+		enddatetime = new Date(enddatetime);
+		unixstartdatetime = Math.round(startdatetime.getTime() / 1000);
+		unixenddatetime = Math.round(enddatetime.getTime() / 1000);
 		imgload();
 	});
 });
@@ -68,21 +68,21 @@ function labelload(selectlabel){
 function imgintarvalload(){
 	var date  = new Date();
 	var arr = datecalc(date,0,0,0,-1,0,0);
-    $(".befordate").val(arr[0]);
-    $(".befortime").val(arr[1]);
-    unixbefor = Math.round(arr[2].getTime() / 1000);
+    $(".startdate").val(arr[0]);
+    $(".starttime").val(arr[1]);
+    unixstartdatetime = Math.round(arr[2].getTime() / 1000);
 	var arr = datecalc(date,0,0,0,0,0,0);
-    $(".afterdate").val(arr[0]);
-    $(".aftertime").val(arr[1]);
-    unixafter = Math.round(arr[2].getTime() / 1000);
-	console.log(unixbefor+" "+unixafter);
+    $(".enddate").val(arr[0]);
+    $(".endtime").val(arr[1]);
+    unixenddatetime = Math.round(arr[2].getTime() / 1000);
+	console.log(unixstartdatetime+" "+unixenddatetime);
 
 	imgload();
 }
 function imgload() {
 	$('img').each(function(i){
 		$(this).fadeOut("fast");
-		$(this).attr('src',settingList.baseurl+settingList.beturl+$(this).attr("title")+settingList.starttime+unixbefor+settingList.endtime+unixafter);
+		$(this).attr('src',settingList.baseurl+settingList.beturl+$(this).attr("title")+settingList.starttime+unixstartdatetime+settingList.endtime+unixenddatetime);
 		$(this).fadeIn("fast");
 	});
 }
@@ -100,8 +100,8 @@ function imagecreate(urlid,titlelabel){
 				inhtml += "<div class=\"span6\"><h5>"+titlelabel+"</h5>";
 				spancnt += 1;
 			}
-			inhtml += "<a href=\""+settingList.baseurl+settingList.imgurl+urlid+settingList.imgurl2+settingList.starttime+unixbefor+settingList.endtime+unixafter+"\" target=\"_blank\">";
-			inhtml += "<img class=\"cactiimg\" title=\""+urlid+"\" src=\""+settingList.baseurl+settingList.beturl+urlid+settingList.starttime+unixbefor+settingList.endtime+unixafter+urlid+"\"></a></div>";
+			inhtml += "<a href=\""+settingList.baseurl+settingList.imgurl+urlid+settingList.imgurl2+settingList.starttime+unixstartdatetime+settingList.endtime+unixenddatetime+"\" target=\"_blank\">";
+			inhtml += "<img class=\"cactiimg\" title=\""+urlid+"\" src=\""+settingList.baseurl+settingList.beturl+urlid+settingList.starttime+unixstartdatetime+settingList.endtime+unixenddatetime+urlid+"\"></a></div>";
 		}
 	}
 };
@@ -109,13 +109,13 @@ function imagecreate(urlid,titlelabel){
 function dateinit(){
 	var date  = new Date();
 	var arr = datecalc(date,0,0,-1,0,0,0);
-    $(".befordate").val(arr[0]);
-    $(".befortime").val(arr[1]);
-    unixbefor = Math.round(arr[2].getTime() / 1000);
+    $(".startdate").val(arr[0]);
+    $(".starttime").val(arr[1]);
+    unixstartdatetime = Math.round(arr[2].getTime() / 1000);
 	var arr = datecalc(date,0,0,0,0,0,0);
-    $(".afterdate").val(arr[0]);
-    $(".aftertime").val(arr[1]);
-    unixafter = Math.round(arr[2].getTime() / 1000);
+    $(".enddate").val(arr[0]);
+    $(".endtime").val(arr[1]);
+    unixenddatetime = Math.round(arr[2].getTime() / 1000);
 };
 
 function datecalc(datetime,y,M,d,h,m,s){
